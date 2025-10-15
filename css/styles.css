@@ -9,6 +9,34 @@
     scroll-padding-top: 100px; /* Ajustalo según la altura de tu menú fijo */
 }
 
+/* Mejoras de accesibilidad - Indicadores de foco */
+*:focus {
+    outline: 2px solid var(--orange);
+    outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+*:focus-visible {
+    outline: 2px solid var(--orange);
+    outline-offset: 2px;
+}
+
+/* Ocultar elementos decorativos de lectores de pantalla */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
 body {
     padding-top: 120px; /* Compensar el header fijo */
 }
@@ -150,7 +178,7 @@ section {
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 2rem;
@@ -1009,11 +1037,10 @@ section {
     display: grid;
     padding: 2rem 5rem;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows:repeat(3, 1fr) ;
+    grid-template-rows: repeat(2, 1fr);
     grid-template-areas: 
-    "caja1 caja1 caja1 caja1"
-    "caja2 caja2 caja3 caja3"
-    "caja4 caja6 caja5 caja5"
+    "caja1 caja1 caja2 caja3"
+    "caja4 caja4 caja5 caja5"
     ;
 
   }
@@ -1040,9 +1067,7 @@ section {
 .caja5{
     grid-area: caja5;
 }
-.caja6{
-    grid-area: caja6;
-}
+
 
 .galery img {
   transition: opacity 0.5s ease-in-out;
@@ -1507,14 +1532,13 @@ form textarea:focus {
 
   .galery {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     grid-template-areas: 
       "caja1"
       "caja2"
       "caja3"
       "caja4"
-      "caja5"
-      "caja6";
+      "caja5";
     padding: 1rem;
   }
 
@@ -1680,10 +1704,9 @@ form textarea:focus {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
     grid-template-areas: 
-      "caja1 caja1"
-      "caja2 caja3"
-      "caja4 caja5"
-      "caja6 caja6";
+      "caja1 caja2"
+      "caja3 caja4"
+      "caja5 caja5";
     padding: 2rem;
   }
 
@@ -1966,14 +1989,40 @@ form textarea:focus {
 
 .galeria-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+    grid-template-areas: 
+    "galeria1 galeria1"
+    "galeria2 galeria3";
 }
 
 .galeria-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.galeria-item-large {
+    grid-area: galeria1;
+    aspect-ratio: 16 / 9;
+}
+
+.galeria-item:nth-child(2) {
+    grid-area: galeria2;
+}
+
+.galeria-item:nth-child(3) {
+    grid-area: galeria3;
+}
+
+/* Clase para imágenes simples sin descripción */
+.galeria-item-simple {
     position: relative;
     border-radius: 20px;
     overflow: hidden;
@@ -1982,13 +2031,8 @@ form textarea:focus {
     transition: transform 0.3s ease;
 }
 
-.galeria-item:hover {
+.galeria-item-simple:hover {
     transform: translateY(-10px);
-}
-
-.galeria-item-large {
-    grid-column: span 2;
-    grid-row: span 2;
 }
 
 .galeria-img {
@@ -1998,7 +2042,20 @@ form textarea:focus {
     transition: transform 0.3s ease;
 }
 
+/* Utilities: control image focal point without changing layout */
+.img-top { object-position: 50% 0%; }
+.img-center { object-position: 50% 50%; }
+.img-bottom { object-position: 50% 100%; }
+.focus-up { object-position: 50% 20%; }
+.focus-down { object-position: 50% 80%; }
+.focus-left { object-position: 20% 50%; }
+.focus-right { object-position: 80% 50%; }
+
 .galeria-item:hover .galeria-img {
+    transform: scale(1.05);
+}
+
+.galeria-item-simple:hover .galeria-img {
     transform: scale(1.05);
 }
 
