@@ -227,6 +227,7 @@ section {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  text-decoration: none;
 }
 
 .hero-cta-primary:hover {
@@ -923,6 +924,9 @@ section {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  text-decoration: none;
+
+ 
 }
 
 .service-cta-primary {
@@ -931,8 +935,9 @@ section {
 }
 
 .service-cta-primary:hover {
-  background: #d35400;
+  background: var(--brown);
   transform: translateY(-2px);
+
 }
 
 .service-cta-secondary {
