@@ -1039,8 +1039,9 @@ section {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-template-areas: 
-    "caja1 caja1 caja2 caja3"
-    "caja4 caja4 caja5 caja5"
+    "caja1 caja1 caja2 caja2"
+    "caja4 caja3 caja5 caja5"
+  
     ;
 
   }
@@ -1356,6 +1357,8 @@ form textarea:focus {
   gap: 1rem;
   padding-top: 0.5rem;
   font-size: 1.2rem;
+  
+
 }
 
 
